@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="student-detail">
+  <h2>{{ student.name }}</h2>
+
+  </div>
+
+  <p><a href="{% url 'student_edit' student.pk %}">Edit</a> | <a href="{% url 'student_delete' student.pk %}">Delete</a></p>
+  <p>Back to <a href="{% url 'student_list' %}">All Students</a>.</p>
+{% endblock content %}

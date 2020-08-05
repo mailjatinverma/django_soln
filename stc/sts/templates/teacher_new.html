@@ -1,0 +1,12 @@
+<!--templates/teacher_new.html-->
+{% extends 'base.html' %}
+
+{% block title %} Teacher - Create New{% endblock title %}
+
+{% block content %}
+    <h1> New Teacher</h1>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success ml-2" type="submit"> Save</button>
+    </form>
+{% endblock content %}

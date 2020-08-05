@@ -1,0 +1,21 @@
+<!--templates/teacher_list.html-->
+{% extends 'base.html' %}
+{% block title %} Teachers {% endblock title %}
+
+{% block content %}
+    {% for teacher in object_list %}
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <span class="font-weight-bold">{{ teacher.name }}</span>
+                </div>
+            </div>
+
+            <div class="card-footer text-center text-muted">
+                <a href="{% url 'teacher_edit' teacher.pk %}">Edit</a> |
+                <a href="{% url 'teacher_delete' teacher.pk %}">Delete</a>
+            </div>
+        </div>
+    <br />
+  {% endfor %}
+{% endblock content %}

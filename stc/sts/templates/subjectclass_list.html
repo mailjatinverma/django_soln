@@ -1,0 +1,23 @@
+<!--templates/teacher_list.html-->
+{% extends 'base.html' %}
+{% block title %} SubjectClass'es {% endblock title %}
+
+{% block content %}
+    {% for subject_class in object_list %}
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <span class="font-weight-bold">{{ subject_class.teacher }}</span> |*|
+                    <span class="font-weight-bold">{{ subject_class.student }}</span> |*|
+                    <span class="font-weight-bold">{{ subject_class.is_starred }}</span>
+                </div>
+            </div>
+
+            <div class="card-footer text-center text-muted">
+                <a href="{% url 'subjectclass_edit' subject_class.pk %}">Edit</a> |
+                <a href="{% url 'subjectclass_delete' subject_class.pk %}">Delete</a>
+            </div>
+        </div>
+    <br />
+  {% endfor %}
+{% endblock content %}

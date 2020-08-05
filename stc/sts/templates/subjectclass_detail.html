@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="subjectclass-detail">
+    <h2> {{ subjectclass.teacher }} </h2>
+    <h2> {{ subjectclass.student }} </h2>
+    <h2> {{ subjectclass.is_starred }} </h2>
+  </div>
+
+  <p><a href="{% url 'subjectclass_edit' subjectclass.pk %}">Edit</a> | <a href="{% url 'subjectclass_delete' subjectclass.pk %}">Delete</a></p>
+  <p>Back to <a href="{% url 'subjectclass_list' %}">All SubjectClasses</a>.</p>
+{% endblock content %}
