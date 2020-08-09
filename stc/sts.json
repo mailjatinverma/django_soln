@@ -1,0 +1,39 @@
+[
+  {
+    "model": "sts.teacher",
+    "pk": 1,
+    "fields":{
+      "name": "Teacher1"
+    }
+  },
+  {
+    "model": "sts.teacher",
+    "pk": 2,
+    "fields":{
+      "name": "Teacher2"
+    }
+  },
+  {
+    "model": "sts.student",
+    "pk": 1,
+    "fields":{
+      "name": "Student1"
+    }
+  },
+  {
+    "model": "sts.student",
+    "pk": 2,
+    "fields":{
+      "name": "Student2"
+    }
+  },
+  {
+    "model": "sts.subjectclass",
+    "pk": 1,
+    "fields":{
+      "teacher": 1,
+      "student": 1,
+      "is_starred": true
+    }
+  }
+]

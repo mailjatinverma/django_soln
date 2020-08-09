@@ -6,9 +6,9 @@ from django.urls import reverse # new
 
 class TeacherListViewTest(TestCase):
 
-    def setup(self):
+    def setUp(self):
         teacher_1 = Teacher.objects.create(name="Teacher1")
-        student_1 = Student.objects.craete(name="Student1")
+        student_1 = Student.objects.create(name="Student1")
         subject_class_1 = SubjectClass(teacher=teacher_1, student=student_1, is_starred=True)
 
     def test_string_representation(self):
@@ -17,7 +17,6 @@ class TeacherListViewTest(TestCase):
 
         student = Student(name="StudentNo1")
         self.assertEqual(str(student), student.name)
-
 
     def test_view_url_exists_at_proper_location(self):
         resp = self.client.get('/teacher/')
@@ -30,16 +29,15 @@ class TeacherListViewTest(TestCase):
     def test_teacher_list_view(self):
         resp = self.client.get(reverse('teacher_list'))
         self.assertEqual(resp.status_code, 200)
-        self.assertContains(resp, 'Teacher1')
+        self.assertContains(resp, "Teacher1")
         self.assertTemplateUsed(resp, 'teacher_list.html')
 
     def test_teacher_detail_view(self):
-        """???"""
         response = self.client.get('/teacher/1/')
         self.assertEqual(response.status_code, 200)
 
         no_response = self.client.get('/teacher/100000/')
         self.assertEqual(no_response.status_code, 404)
 
-        self.assertContains(response, 'Teacher1')
+        self.assertContains(response, "Teacher1")
         self.assertTemplateUsed(response, 'teacher_detail.html')

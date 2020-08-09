@@ -26,8 +26,8 @@ class SubjectClass(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     is_starred = models.BooleanField(default=False)
 
-    class Meta:
-        unique_together = [['teacher', 'student']]
+    # class Meta:
+    #     unique_together = [['teacher', 'student']]
 
     def __str__(self):
         return "'{0}'-'{1}'".format(self.teacher, self.student)
