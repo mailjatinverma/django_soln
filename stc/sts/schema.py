@@ -221,13 +221,4 @@ class Mutation(graphene.ObjectType):
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
 
-
-
-
-
-
-
-
-
-
-
+# Reference: https://stackabuse.com/building-a-graphql-api-with-django/
