@@ -27,7 +27,10 @@ class Query(ObjectType):
     subject_class = graphene.Field(SubjectClassType, id=graphene.Int())
     teachers = graphene.List(TeacherType)
     students= graphene.List(StudentType)
-    subject_classes = graphene.List(SubjectClassType)
+    subject_classs = graphene.List(SubjectClassType)
+
+    student_given_teacher = graphene.Field(StudentType, id=graphene.Int())
+    # teachers_with_starred_students = graphene.Field(TeacherType)
 
     def resolve_teacher(self, info, **kwargs):
         id = kwargs.get('id')
@@ -59,8 +62,26 @@ class Query(ObjectType):
     def resolve_students(self, info, **kwargs):
         return Student.objects.all()
 
-    def resolve_subject_classs(selfself, info, **kwargs):
+    def resolve_subject_classs(self, info, **kwargs):
         return SubjectClass.objects.all()
+
+    def resolve_student_given_teacher(self, info, **kwargs):
+        teacher_id = kwargs.get('id')
+        subject_classs = SubjectClass.objects.all()
+        students = [subject_class.student if subject_class.teacher.id == teacher_id else None for subject_class in subject_classs]
+        return list(set(students))
+
+    # WIP
+    # def resolve_teachers_with_starred_students(self, info, **kwargs):
+    #     teachers = Teacher.objects.all()
+    #     subject_classs = SubjectClass.objects.all()
+    #     teacher_starred_student_map = {}
+    #     for subject_class in subject_classs:
+    #         if subject_class.teacher.id not in teacher_starred_student_map.keys():
+    #             teacher_starred_student_map[subject_class.teacher.id] = []
+    #         if subject_class.is_starred:
+    #             teacher_starred_student_map[subject_class.teacher.id].append(subject_class.student.id)
+    #     return teacher_starred_student_map
 
 
 # Create Input Object Types
