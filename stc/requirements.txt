@@ -1,4 +1,4 @@
 coverage==5.2.1
-Django==3.0
+Django==3.0.14
 graphene==2.1.8
 graphene-django==2.12.1
